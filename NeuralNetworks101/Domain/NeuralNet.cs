@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NeuralNetworks101.Domain.Enums;
 
 namespace NeuralNetworks101.Domain
 {
