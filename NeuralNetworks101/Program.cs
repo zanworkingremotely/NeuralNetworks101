@@ -11,6 +11,7 @@ namespace NeuralNetworks101
     {
         public static void Main(string[] args)
         {
+            TestTrigger();
         }
 
         #region Member Variables
