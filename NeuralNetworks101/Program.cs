@@ -9,19 +9,26 @@ namespace NeuralNetworks101
 {
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            TestTrigger();
-        }
-
         #region Member Variables
 
-        private NeuralNet net;
-        private double high = 0.99, low = 0.01, mid = 0.5;
+        private static NeuralNet net;
+        private static double high = 0.99, low = 0.01, mid = 0.5;
+        private static int ckA, ckB = 0;
 
         #endregion
 
-        private void Trigger()
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter ckA value (high = 1, low = 0):");
+            var ckA = Console.ReadLine();
+
+            Console.WriteLine("Enter ckB value (high = 1, low = 0):");
+            var ckB = Console.ReadLine();
+
+            TestTrigger();
+        }
+
+        private static void Trigger()
         {
             #region Declarations
 
@@ -180,7 +187,7 @@ namespace NeuralNetworks101
 
         }
 
-        private void TestTrigger()
+        private static void TestTrigger()
         {
             #region Declarations
 
@@ -198,8 +205,8 @@ namespace NeuralNetworks101
 
             #region Execution
 
-            net.PerceptionLayer[0].Output = (ckA.Checked) ? high : low;
-            net.PerceptionLayer[1].Output = (ckB.Checked) ? high : low;
+            net.PerceptionLayer[0].Output = ckA > 0 ? high : low;
+            net.PerceptionLayer[1].Output = ckB > 0 ? high : low;
             net.Pulse();
             result = net.OutputLayer[0].Output > .5;
 
